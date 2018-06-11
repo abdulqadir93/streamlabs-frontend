@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <form (ngSubmit)="search(searchInput.value)">
+    <mat-form-field>
+      <input matInput placeholder="Search..." #searchInput>
+    </mat-form-field>
+  </form>
+  <app-video-list [videos]="videos$ | async"></app-video-list>
+  <div class="spinner-wrapper" *ngIf="loading$ | async">
+    <mat-spinner></mat-spinner>
+  </div>
+  <button mat-raised-button *ngIf="!(loading$ | async) && (videos$ | async).length" (click)="loadMore()">Load More</button>
+</div>
