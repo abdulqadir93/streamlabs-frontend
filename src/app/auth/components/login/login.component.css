@@ -1,0 +1,8 @@
+:host {
+    background-image: url('https://static.wixstatic.com/media/64806b_b4346145ec424bcf83d92775e3a2701b~mv2.gif');
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
