@@ -1,0 +1,4 @@
+<h4>Live Chat</h4>
+<app-chat-message-list
+    [messages]="messages$ | async"
+    (authorClicked)="navigateToAuthorChat($event)"></app-chat-message-list>

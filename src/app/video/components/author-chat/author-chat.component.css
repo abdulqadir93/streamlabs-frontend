@@ -1,0 +1,18 @@
+:host {
+  height: 100%;
+  overflow-y: auto;
+  display: block;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.header mat-icon {
+  cursor: pointer;
+}
+
+.header h4 {
+  margin-left: 10px;
+}

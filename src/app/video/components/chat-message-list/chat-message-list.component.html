@@ -1,0 +1,4 @@
+<app-chat-message-list-item 
+  *ngFor="let message of messages"
+  [message]="message"
+  (authorClicked)="authorClicked.emit($event)"></app-chat-message-list-item>

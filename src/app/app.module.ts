@@ -21,6 +21,7 @@ import { TokenInterceptor } from './auth/services/auth.interceptor';
     RouterModule.forRoot([
       { path: 'login', loadChildren: './auth/auth.module#AuthModule', canActivate: [CodeGuard, TokenGuard] },
       { path: 'search', loadChildren: './search/search.module#SearchModule' },
+      { path: 'video', loadChildren: './video/video.module#VideoModule' },
       { path: '', redirectTo: 'login', pathMatch: 'full' }
     ])
   ],

@@ -1,0 +1,5 @@
+<div class="header">
+  <mat-icon (click)="navigateToLiveChat()">keyboard_backspace</mat-icon>
+  <h4>Chat Messages for {{authorDetails.displayName || authorDetails.id}}</h4>
+</div>
+<app-chat-message-list [messages]="messages"></app-chat-message-list>

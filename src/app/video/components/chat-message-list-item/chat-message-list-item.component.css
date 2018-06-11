@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0rem;
+  padding: 0.5rem;
+}
+
+.avatar {
+  width: 32px;
+  border-radius: 100%;
+  margin-right: 8px;
+}
+
+.author-name {
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.author-name,
+.display-message {
+  font-size: 14px;
+}

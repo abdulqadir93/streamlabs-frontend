@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <div class="video">
+    <iframe
+      *ngIf="videoUrl"
+      width="560" height="315"
+      [src]="videoUrl"
+      frameborder="0" allow="autoplay; encrypted-media" 
+      allowfullscreen></iframe>
+    <div class="">
+      <h2>{{(video$ | async)?.title}}</h2>
+      <p>{{(video$ | async)?.description}}</p>
+    </div>
+  </div>
+  <div class="chat">
+    <router-outlet name="chat"></router-outlet>
+  </div>
+</div>

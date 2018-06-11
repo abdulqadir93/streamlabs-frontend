@@ -1,0 +1,16 @@
+.wrapper {
+  margin: 2rem 0rem;
+  display: flex;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
+.video {
+  flex: 1;
+  margin: 0rem 2rem;
+}
+
+.chat {
+  height: calc(100vh - 4rem);
+  margin: 0rem 2rem;
+  flex: 1;
+}

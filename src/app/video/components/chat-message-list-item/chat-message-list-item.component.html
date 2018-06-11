@@ -1,0 +1,7 @@
+<div>
+  <img class="avatar" [src]="message.author.profileImageUrl" />
+</div>
+<div>
+  <h4 (click)="authorClicked.emit(message.author)" class="author-name">{{message.author.displayName}}</h4>
+  <p class="display-message">{{message.displayMessage}}</p>
+</div>
