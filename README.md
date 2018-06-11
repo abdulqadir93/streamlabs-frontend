@@ -1,3 +1,20 @@
+##### Dependencies
+- NodeJs 8.9.3 with npm 5.x
+
+##### Running locally
+cd into the project root and run `npm install` to install all the dependencies.
+
+Once finished, run `npm run start:dev` to start a dev server (`http://localhost:4200`). The dev server will watch the file changes and reload itself.
+
+The backend uri is stored as a config in `src/environments/*.ts` files. Adjust it accordingly.
+
+##### Frameworks/Libraries
+- Angular 6 with TypeScript
+
+##### Deployment
+Deployed at: https://streamlabs-fe.herokuapp.com
+
+
 # StreamlabsFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
