@@ -11,6 +11,9 @@ import { ChatService } from './services/chat.service';
 import { VideoService } from './services/video.service';
 import { AuthorChatComponent } from './components/author-chat/author-chat.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ChatMessageComposeComponent } from './components/chat-message-compose/chat-message-compose.component';
 
 @NgModule({
   declarations: [
@@ -18,18 +21,20 @@ import { MatIconModule } from '@angular/material/icon';
     LiveChatComponent,
     ChatMessageListComponent,
     ChatMessageListItemComponent,
-    AuthorChatComponent
+    AuthorChatComponent,
+    ChatMessageComposeComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     MatButtonModule,
     MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,
     RouterModule.forChild([
       { path: ':videoId', component: VideoComponent, children: [
         { path: '', outlet: 'chat', component: LiveChatComponent },
-        { path: 'author/:authorId', outlet: 'chat', component: AuthorChatComponent },
-        // { path: '', redirectTo: 'live' }
+        { path: 'author/:authorId', outlet: 'chat', component: AuthorChatComponent }
       ]}
     ])
   ],

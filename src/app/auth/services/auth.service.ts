@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap, map } from 'rxjs/operators';
+import { tap, map, mergeMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,7 +13,13 @@ export class AuthService {
   fetchToken(code: string): Observable<any> {
     return this.http.post('/oauth2/token', { code })
       .pipe(
-        tap((res: any) => localStorage.setItem('auth', res.access_token))
+        mergeMap((token: any) => {
+          localStorage.setItem('auth', token.access_token);
+          return this.http.get('/api/me');
+        }),
+        tap(user => {
+          localStorage.setItem('user', JSON.stringify(user));
+        })
       );
   }
 
@@ -21,8 +27,17 @@ export class AuthService {
     return localStorage.getItem('auth');
   }
 
+  getUser(): any {
+    const userStr = localStorage.getItem('user');
+    if (userStr) {
+      return JSON.parse(userStr);
+    }
+    return userStr;
+  }
+
   removeToken(): void {
-    return localStorage.removeItem('auth');
+    localStorage.removeItem('auth');
+    localStorage.removeItem('user');
   }
 
 }

@@ -1,7 +1,12 @@
 :host {
-  height: 100%;
+  height: calc(100% - 1rem);
+  display: flex;
+  flex-direction: column;
+}
+
+app-chat-message-list {
+  flex: 1;
   overflow-y: auto;
-  display: block;
 }
 
 .header {

@@ -2,3 +2,4 @@
 <app-chat-message-list
     [messages]="messages$ | async"
     (authorClicked)="navigateToAuthorChat($event)"></app-chat-message-list>
+<app-chat-message-compose (send)="sendMessage($event)"></app-chat-message-compose>

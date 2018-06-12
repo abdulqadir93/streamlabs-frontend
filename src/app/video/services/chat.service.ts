@@ -44,4 +44,8 @@ export class ChatService {
     return this.http.get(`/api/chat/${chatId}/author/${authorId}`);
   }
 
+  sendMessage(chatId: string, text: string) {
+    this.http.post(`/api/chat/${chatId}`, { text }).subscribe(res => console.log(res));
+  }
+
 }

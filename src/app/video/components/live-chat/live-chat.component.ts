@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ChatService } from '../../services/chat.service';
 import { VideoService } from '../../services/video.service';
-import { filter, takeWhile } from 'rxjs/operators';
+import { filter, takeWhile, take, map } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -22,19 +22,33 @@ export class LiveChatComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.service.stopPoll();
-    this.videoService.video$
-      .pipe(
-        takeWhile(() => this.active),
-        filter(video => !!video),
-      )
-      .subscribe((video: any) => {
-        this.service.pollMessages(video.chatId);
+    this.getChatId()
+      .pipe(takeWhile(() => this.active))
+      .subscribe(chatId => {
+        this.service.stopPoll();
+        this.service.pollMessages(chatId);
       });
   }
 
   navigateToAuthorChat(author: any) {
     this.router.navigate([{ outlets: { chat: ['author', author.id] } }], { relativeTo: this.activatedRoute.parent });
+  }
+
+  sendMessage(text: string) {
+    if (text.length) {
+      this.getChatId().pipe(take(1))
+        .subscribe(chatId => {
+          this.service.sendMessage(chatId, text);
+        });
+    }
+  }
+
+  private getChatId() {
+    return this.videoService.video$
+      .pipe(
+        filter(video => !!video),
+        map(video => video.chatId)
+      );
   }
 
   ngOnDestroy() {

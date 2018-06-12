@@ -1,0 +1,7 @@
+<form (ngSubmit)="emit(input)">
+  <mat-form-field appearance="standard">
+    <mat-label>@{{user.name}}</mat-label>
+    <input #input matInput placeholder="Say something...">
+    <mat-icon matSuffix (click)="emit(input)">send</mat-icon>
+  </mat-form-field>
+</form>
